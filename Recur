@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+
+int function1(int a, int b);
+int function2(int a, int b);
+
+int main() {
+    int a, b;
+
+    // Input values for testing
+    printf("Enter two integers: ");
+    scanf("%d %d", &a, &b);
+
+    
+    function1(a, b);
+
+    return 0;
+}
+
+
+int function1(int a, int b) {
+    int result1 = a + b;
+    printf("Function1 result: %d\n", result1);
+
+    int result2 = function2(a, b);
+
+    // Recursive call if results are not equal
+    if (result1 != result2) {
+        printf("Results are not equal, calling function1 again...\n");
+        return function1(a - 1, b - 1); 
+    } else {
+        printf("Both functions returned the same result. Stopping recursion.\n");
+        return result1;
+    }
+}
+
+
+int function2(int a, int b) {
+    int result = a * b;
+    printf("Function2 result: %d\n", result);
+    return result;
+}
